@@ -2,18 +2,18 @@ var express = require('express');
 var router = express.Router();
 var pg = require('pg');
 
-var dbURL = 'postgres://gligyezh:YbWG5l2txol8fe6e3EUnrjw7sJ8N5TP2@baasu.db.elephantsql.com:5432/gligyezh'
+var dbURL = 'postgres://cascadeapp:teamcascade@cascade-db.cxnma2xuxlgy.us-west-2.rds.amazonaws.com:5432/cascadeapp'
 const client = new pg.Client(dbURL);
 client.connect();
 
 router.post('/', function(req, res, next) {
 
-  	var username = req.body.username
+  	var email = req.body.email
   	var password = req.body.password;
 
   	client.query(
-  	"SELECT * FROM users WHERE username = $1 AND password = $2",
-  	[username, password], function (err, result){
+  	"SELECT * FROM users WHERE email = $1 AND password = $2",
+  	[email, password], function (err, result){
 
   		if (err) {
   			console.log(err);
@@ -22,7 +22,7 @@ router.post('/', function(req, res, next) {
 
   		if (result.rows.length > 0) {
   			console.log(result.rows[0]);
-  			res.send({ 'success': true, 'user': result.rows[0].username });
+  			res.send({ 'success': true, 'user': result.rows[0].email });
   		} else {
   			res.send({ 'success': false, 'message': 'User not found' });
   		}
