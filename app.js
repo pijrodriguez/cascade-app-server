@@ -8,6 +8,7 @@ var pg = require('pg');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var tasks = require('./routes/tasks');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/tasks', tasks);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -44,9 +46,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const server = app.listen(4500, () => {
+/*const server = app.listen(4500, () => {
   const { address, port } = server.address();
   console.log(`Listening at http://${address}:${port}`);
-});
+});*/
 
 module.exports = app;
