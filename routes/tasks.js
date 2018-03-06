@@ -7,12 +7,12 @@ const client = new pg.Client(dbURL);
 client.connect();
 
 router.post('/', function(req, res, next) {
-  	var email = req.body.email
-  	var password = req.body.password;
 
+  	var user_id = parseInt(req.body.user_id);
+	console.log(typeof user_id);
   	client.query(
-  	"SELECT * FROM users WHERE email = $1 AND password = $2 AND is_admin = false",
-  	[email, password], function (err, result){
+  	"SELECT * FROM goals WHERE assigned_to = $1 AND finished_date is null",
+  	[user_id], function (err, result){
 
   		if (err) {
   			console.log(err);
@@ -20,13 +20,12 @@ router.post('/', function(req, res, next) {
   		}
 
   		if (result.rows.length > 0) {
-  			console.log(result.rows[0]);
-			  res.send({ 
-				'success': true, 
-				'user': result.rows[0].email, 
-				'user_id': result.rows[0].user_id });
+			console.log(result.rows);
+			console.log('SUCCESS');
+			
+  			res.send({ 'success': true, 'tasks': result.rows });
   		} else {
-  			res.send({ 'success': false, 'message': 'User not found' });
+  			res.send({ 'success': false, 'message': 'No tasks found.' });
   		}
   	}
   );
