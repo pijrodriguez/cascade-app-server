@@ -48,9 +48,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-/*const server = app.listen(4500, () => {
-  const { address, port } = server.address();
-  console.log(`Listening at http://${address}:${port}`);
-});*/
-
 module.exports = app;
