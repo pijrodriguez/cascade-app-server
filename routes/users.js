@@ -29,7 +29,9 @@ router.post('/', function(req, res, next) {
 				if(isMatch){
 					res.send({ 
 						'success': true, 
-						'user': result.rows[0].email, 
+						'user': result.rows[0].email,
+						'first_name':result.rows[0].fname,
+						'last_name':result.rows[0].lname,  
 						'user_id': result.rows[0].user_id });
 				} else {
 					console.log('Passwords doesn\'t match');
