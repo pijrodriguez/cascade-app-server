@@ -7,8 +7,8 @@ const client = new pg.Client(dbURL);
 client.connect();
 
 router.post('/', function(req, res, next) {
-    var goalID = req.body.goalID;
-  	var assignedTo = req.body.assignedTo;
+    var goalID = req.body.goal_id;
+  	var assignedTo = req.body.assigned_to;
 	
   	client.query(
       "UPDATE goals SET finished_date = current_timestamp WHERE goal_id = $1 AND assigned_to = $2;",
