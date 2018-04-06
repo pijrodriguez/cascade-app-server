@@ -9,6 +9,7 @@ var pg = require('pg');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var tasks = require('./routes/tasks');
+var countTasks = require('./routes/count-tasks');
 var finishedTask = require('./routes/finished-task');
 
 var app = express();
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/tasks', tasks);
+app.use('/count-tasks', countTasks);
 app.use('/finished-task', finishedTask);
 
 // catch 404 and forward to error handler

@@ -16,16 +16,9 @@ router.post('/', function(req, res, next) {
 
   		if (err) {
   			console.log(err);
-  			res.send({ 'success': false, 'message': 'Could not connect to db'})
-  		}
-
-  		if (result.rows.length > 0) {
-			console.log(result.rows);
-			console.log('SUCCESS');
-			
-  			res.send({ 'success': true, 'tasks': result.rows });
+  			res.send({ 'success': false, 'message': err})
   		} else {
-  			res.send({ 'success': false, 'message': 'No tasks found.' });
+  			res.send({ 'success': true });
   		}
   	}
   );
