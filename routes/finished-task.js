@@ -11,14 +11,14 @@ router.post('/', function(req, res, next) {
   	var assignedTo = req.body.assigned_to;
 	
   	client.query(
-      "UPDATE goals SET finished_date = current_timestamp WHERE goal_id = $1 AND assigned_to = $2;",
+      "UPDATE goals SET finished_date = current_timestamp - interval '7 hours' WHERE goal_id = $1 AND assigned_to = $2;",
   	[goalID, assignedTo], function (err, result){
 
   		if (err) {
   			console.log(err);
   			res.send({ 'success': false, 'message': err})
   		} else {
-  			res.send({ 'success': true });
+			res.send({ 'success': true, 'message': err})
   		}
   	}
   );
