@@ -12,7 +12,7 @@ router.post('/', function(req, res, next) {
 		var user_id = parseInt(req.body.user_id);
 		console.log(typeof user_id);
 		client.query(
-		"SELECT * FROM goals WHERE assigned_to = $1 ORDER BY finished_date desc",
+		"SELECT * FROM goals WHERE assigned_to = $1 and finished_date is null",
 		[user_id], function (err, result){
 
 			if (err) {
