@@ -32,7 +32,9 @@ router.post('/', function(req, res, next) {
 						'user': result.rows[0].email,
 						'first_name':result.rows[0].fname,
 						'last_name':result.rows[0].lname,  
-						'user_id': result.rows[0].user_id });
+						'user_id': result.rows[0].user_id,
+						'password': password 
+					});
 				} else {
 					console.log('Passwords doesn\'t match');
 					res.send({ 'success': false, 'message': 'Incorrect password' })
