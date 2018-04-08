@@ -12,6 +12,7 @@ var tasks = require('./routes/tasks');
 var countTasks = require('./routes/count-tasks');
 var finishedTask = require('./routes/finished-task');
 var missedTask = require('./routes/missed-task');
+var password = require('./routes/password');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use('/tasks', tasks);
 app.use('/count-tasks', countTasks);
 app.use('/finished-task', finishedTask);
 app.use('/missed-task', missedTask);
+app.use('/password', password);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
