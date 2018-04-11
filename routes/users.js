@@ -40,7 +40,7 @@ router.post('/', function(req, res, next) {
 					res.send({ 'success': false, 'message': 'Incorrect password' })
 				}
   		} else {
-  			res.send({ 'success': false, 'message': 'User not found' });
+  			res.send({ 'success': false, 'message': 'Incorrect e-mail/password' });
   		}
   	}
   );
