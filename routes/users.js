@@ -33,7 +33,8 @@ router.post('/', function(req, res, next) {
 						'first_name':result.rows[0].fname,
 						'last_name':result.rows[0].lname,  
 						'user_id': result.rows[0].user_id,
-						'password': password 
+						'password': password,
+						'user_rating': result.rows[0].rating
 					});
 				} else {
 					console.log('Passwords doesn\'t match');
