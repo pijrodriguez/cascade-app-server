@@ -1,13 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-
+const dbURL = require('../dburl');
 /** BCRYPT **/
 const bcrypt = require("bcrypt");
 /** BCRYPT **/
 
 //connect to the database
-var dbURL = 'postgres://followthru:cascadeapp@follow-thru-db.czto5vbsmdqt.us-west-2.rds.amazonaws.com:5432/followthru';
 const client = new pg.Client(dbURL);
 client.connect();
 
