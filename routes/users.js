@@ -6,7 +6,7 @@ var pg = require('pg');
 const bcrypt = require("bcrypt");
 /** BCRYPT **/
 
-var dbURL = 'postgres://followthru:cascadeapp@follow-thru-db.czto5vbsmdqt.us-west-2.rds.amazonaws.com:5432/followthru';
+var dbURL = 'postgres://cascadeapp:teamcascade@cascade-db.cxnma2xuxlgy.us-west-2.rds.amazonaws.com:5432/cascadeapp'
 const client = new pg.Client(dbURL);
 client.connect();
 
