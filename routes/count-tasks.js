@@ -1,8 +1,9 @@
+require('dotenv').config();
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-const dbURL = require('../dburl');
 
+const dbURL = process.env.DATABASE_URL;
 const client = new pg.Client(dbURL);
 client.connect();
 
