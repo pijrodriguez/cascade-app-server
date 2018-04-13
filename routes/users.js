@@ -1,11 +1,11 @@
-
-
+require('dotenv').config();
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
 /** BCRYPT **/
 const bcrypt = require("bcrypt");
-const dbURL = require('../dburl');
+
+const dbURL = process.env.DATABASE_URL;
 /** BCRYPT **/
 
 const client = new pg.Client(dbURL);
